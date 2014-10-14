@@ -43,7 +43,7 @@ public class MainActivity extends FragmentActivity {
 	                public void onPageSelected(int position) {
 	                	actionBar.setSelectedNavigationItem(position);
 	                }
-	            });
+	            }); 
 
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 

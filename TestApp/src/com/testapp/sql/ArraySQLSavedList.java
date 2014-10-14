@@ -42,7 +42,7 @@ public class ArraySQLSavedList<E extends Serializable> extends ArrayList<E> {
 	public class FeedReaderDbHelper extends SQLiteOpenHelper {
 		public static final String DATABASE_NAME = "WMSData.db";
 
-		public FeedReaderDbHelper(Context context) {
+ 		public FeedReaderDbHelper(Context context) {
 			super(context, DATABASE_NAME, null, FeedEntry.DATABASE_VERSION);
 		}
 
@@ -175,11 +175,6 @@ public class ArraySQLSavedList<E extends Serializable> extends ArrayList<E> {
 
 	private long save(int index) {
 		try {
-			// try{
-			// throw new Exception();
-			// } catch(Exception e){e.printStackTrace();}
-			// Log.v(TAG, "save()" + index);
-
 			ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 			ObjectOutputStream objectOutStream = new ObjectOutputStream(
 					byteArrayOutputStream);
@@ -210,14 +205,8 @@ public class ArraySQLSavedList<E extends Serializable> extends ArrayList<E> {
 
 	@SuppressWarnings("unchecked")
 	private void Restore() {
-		// try{
-		// throw new Exception();
-		// } catch(Exception e){e.printStackTrace();}
-		// Log.v(TAG, "Restore()");
 		try {
 			super.clear();
-
-			// LogDBStatus();
 
 			SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
@@ -284,29 +273,21 @@ public class ArraySQLSavedList<E extends Serializable> extends ArrayList<E> {
 		RemoveSQL(realId);
 
 		long insert = db.insert(mTableName, null, values);
-		// LogDBStatus();
 		return insert;
 	}
 
 	private void RemoveSQL(int id) {
-		// try{
-		// throw new Exception();
-		// } catch(Exception e){e.printStackTrace();}
 		int realId = id;
-		// Log.v(TAG, "RemoveSQL()" + realId);
 		SQLiteDatabase db = mDbHelper.getWritableDatabase();
 		db.delete(mTableName, WHERE_CLAUSE,
 				new String[] { String.valueOf(realId) });
-		// LogDBStatus();
 	}
 
 	private static final String FetchSelection = FeedEntry.COLUMN_DataIndex
 			+ " LIKE %1$s";
 
 	private void FetchSQL(int id) {
-		// LogDBStatus();
 		int real = id;
-		// Log.v(TAG, "FetchSQL()" + real);
 		SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
@@ -315,7 +296,6 @@ public class ArraySQLSavedList<E extends Serializable> extends ArrayList<E> {
 			String selection = String.format(FetchSelection, i);
 			db.update(mTableName, values, selection, null);
 		}
-		// LogDBStatus();
 	}
 
 	@Override
@@ -325,14 +305,8 @@ public class ArraySQLSavedList<E extends Serializable> extends ArrayList<E> {
 	}
 
 	private void SQLClear() {
-		// try{
-		// throw new Exception();
-		// } catch(Exception e){e.printStackTrace();}
-
-		// Log.v(TAG, "SQLClear()");
 		SQLiteDatabase db = mDbHelper.getWritableDatabase();
 		db.delete(mTableName, null, null);
-		// LogDBStatus();
 	}
 
 }

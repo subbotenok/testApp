@@ -1,49 +1,41 @@
 package com.testapp.adapter;
 
+import java.util.ArrayList;
+
 import android.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.testapp.fragment.WeatherFragment;
 
-public class WeatherPagerAdapter extends FragmentPagerAdapter {
+public class WeatherPagerAdapter extends FragmentStatePagerAdapter {
 	
 	
 	
 	private ActionBar mActionBar;
+	private ArrayList<WeatherFragment> fragments;
 
 
 
-	public WeatherPagerAdapter(FragmentManager fm, ActionBar actionBar) {
+	public WeatherPagerAdapter(FragmentManager fm, ActionBar actionBar, ArrayList<WeatherFragment> fragments) {
 		super(fm);
 		this.mActionBar = actionBar;
+		this.fragments = fragments;
 	}
 
 	@Override
 	public Fragment getItem(int arg0) {
 		
-		Object object = mActionBar.getTabAt(arg0).getTag();
-		
-		if (object instanceof WeatherFragment)
-		{
-			WeatherFragment fragment = (WeatherFragment) object;
-			return fragment;
-		}
+		if (fragments.size()>arg0)
+			return fragments.get(arg0);
 		return new Fragment();
 	}
 
 	@Override
 	public int getCount() {
-		return mActionBar.getTabCount();
-//		return 0;
-	}
-	
-	
+		return fragments.size();
 
-	@Override
-	public CharSequence getPageTitle(int position) {
-		// TODO Auto-generated method stub
-		return super.getPageTitle(position);
 	}
 }

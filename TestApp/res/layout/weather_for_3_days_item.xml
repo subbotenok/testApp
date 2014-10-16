@@ -13,21 +13,51 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/temperatureTextView"
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/dateTextView"
-        android:layout_marginTop="14dp"
-        android:text="temperature day=&quot;13.1&quot; min=&quot;12.3&quot; max=&quot;13.1&quot; night=&quot;12.3&quot;" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="16dp"
+        android:text="Precipitation" />
 
     <TextView
-        android:id="@+id/precipitationTextView"
+        android:id="@+id/precipitation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/temperatureTextView"
-        android:layout_marginTop="14dp"
-        android:text="precipitation &quot;rain&quot;" />
+        android:layout_alignBaseline="@+id/textView1"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignLeft="@+id/dateTextView"
+        android:text="moderate rain" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Temperature day:" />
+
+        <TextView
+            android:id="@+id/temperature_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="13.74" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="night:" />
+
+        <TextView
+            android:id="@+id/temperature_night"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="14.86" />
+    </LinearLayout>
 
 </RelativeLayout>

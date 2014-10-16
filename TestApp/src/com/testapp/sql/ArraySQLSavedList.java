@@ -18,7 +18,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
-import android.util.Log;
 
 public class ArraySQLSavedList<E extends Serializable> extends ArrayList<E> {
 
@@ -31,6 +30,7 @@ public class ArraySQLSavedList<E extends Serializable> extends ArrayList<E> {
 	private static final String WHERE_CLAUSE = FeedEntry.COLUMN_DataIndex
 			+ " LIKE ?";
 
+	
 	private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS %1$s";
 	private static final String TAG = "ArraySQLSavedList";
 
@@ -145,7 +145,6 @@ public class ArraySQLSavedList<E extends Serializable> extends ArrayList<E> {
 		if (cursor.moveToFirst())
 			do {
 				String name = cursor.getString(0);
-				Log.e("", name);
 				if (name.equals(TableName)) {
 					db.close();
 					return;
@@ -156,8 +155,6 @@ public class ArraySQLSavedList<E extends Serializable> extends ArrayList<E> {
 		db = mDbHelper.getWritableDatabase();
 
 		String sql = String.format(SQL_CREATE_ENTRIES, mTableName);
-		// Log.v(TAG, "onCreate()");
-		// Log.v(TAG, sql);
 
 		db.execSQL(sql);
 		db.close();
@@ -226,8 +223,6 @@ public class ArraySQLSavedList<E extends Serializable> extends ArrayList<E> {
 							.getColumnIndexOrThrow(FeedEntry.COLUMN_DataIndex));
 
 					try {
-						Log.v(TAG, "restored " + ind);
-						// Log.v(TAG, "Size " + data.length) ;
 						ByteArrayInputStream inStream = new ByteArrayInputStream(
 								data);
 

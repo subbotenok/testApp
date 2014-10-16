@@ -1,6 +1,8 @@
 package com.testapp.utils;
 
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import android.annotation.TargetApi;
 import android.os.Build;
@@ -24,5 +26,16 @@ public class Utils {
 	    }
 	}
 	private static final AtomicInteger sNextGeneratedId = new AtomicInteger(1);
+	
+	public static String toSQL(String satiment)
+	{
+		Pattern pattern = Pattern.compile("[a-zA-Z]+");
+		Matcher matcher = pattern.matcher(satiment);
+		if (matcher.find())
+		{
+			return matcher.group(0);
+		}
+		else return String.valueOf(satiment.hashCode());
+	}
 
 }

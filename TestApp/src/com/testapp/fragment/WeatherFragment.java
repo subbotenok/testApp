@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.androidquery.AQuery;
 import com.example.testapp.R;
+import com.testapp.data.WeatherDataList;
 import com.testapp.utils.Utils;
 
 public class WeatherFragment extends Fragment {
@@ -36,8 +37,6 @@ public class WeatherFragment extends Fragment {
 	
 	public WeatherFragment() {
 		super();
-		mCurrentWeatherFragment = new CurrentWeatherFragment();
-		mWeatherFor3DaysFragment  = new WeatherFor3DaysFragment();
 	}
 
 	
@@ -47,6 +46,10 @@ public class WeatherFragment extends Fragment {
 
 		mCityName = getArguments().getString(CITY_NAME,"");
 
+		mCurrentWeatherFragment = CurrentWeatherFragment.createCurrentWeatherFragment(mCityName);
+		mWeatherFor3DaysFragment  = WeatherFor3DaysFragment.createWeatherFor3DaysFragment(mCityName);
+
+		
 		View rootView = inflater.inflate(R.layout.weather_fragment, container,
 				false);
 		final AQuery aq = new AQuery(rootView);
@@ -56,7 +59,7 @@ public class WeatherFragment extends Fragment {
 		aq.id(R.id.content_fragment).getView().setId(mGeneratedFrameLayoutID);
 	
 		
-		
+//		mDataList = new WeatherDataList(mCityName, getActivity());
 		
 		FragmentTransaction transaction = this.getFragmentManager().beginTransaction();
 		transaction.replace(mGeneratedFrameLayoutID, mCurrentWeatherFragment);
@@ -77,7 +80,7 @@ public class WeatherFragment extends Fragment {
 					aq.text("Show current weather.");
 					
 					FragmentTransaction transaction = WeatherFragment.this.getFragmentManager().beginTransaction();
-					transaction.replace(mGeneratedFrameLayoutID, mWeatherFor3DaysFragment,mCityName);
+					transaction.replace(mGeneratedFrameLayoutID, mWeatherFor3DaysFragment);
 					transaction.commitAllowingStateLoss();
 					
 				}else
@@ -85,7 +88,7 @@ public class WeatherFragment extends Fragment {
 					aq.text("Show weather for week.");
 					
 					FragmentTransaction transaction = WeatherFragment.this.getFragmentManager().beginTransaction();
-					transaction.replace(mGeneratedFrameLayoutID, mCurrentWeatherFragment,mCityName);
+					transaction.replace(mGeneratedFrameLayoutID, mCurrentWeatherFragment);
 					transaction.commitAllowingStateLoss();
 					
 				}
@@ -102,6 +105,7 @@ public class WeatherFragment extends Fragment {
 	
 	
 	private int mGeneratedFrameLayoutID;
+	public WeatherDataList mDataList;
 	
 
 }

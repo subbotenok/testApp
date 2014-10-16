@@ -80,7 +80,7 @@ public class WeatherDataList {
 		mSavedList = new ArraySQLSavedList<HashMap<String, String>>(TableName,
 				context);
 
-		data.execute(mCityName);
+		data.execute(Utils.toHTML(mCityName));
 
 	}
 

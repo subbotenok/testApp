@@ -27,15 +27,22 @@ public class Utils {
 	}
 	private static final AtomicInteger sNextGeneratedId = new AtomicInteger(1);
 	
+	static Pattern sqlPattern = Pattern.compile("[a-zA-Z]+");
 	public static String toSQL(String satiment)
 	{
-		Pattern pattern = Pattern.compile("[a-zA-Z]+");
-		Matcher matcher = pattern.matcher(satiment);
+		Matcher matcher = sqlPattern.matcher(satiment);
 		if (matcher.find())
 		{
 			return matcher.group(0);
 		}
 		else return String.valueOf(satiment.hashCode());
 	}
+	
+	public static String toHTML(String satiment)
+	{
+		return satiment.replaceAll("\\s", "%20");
+	}
+	
+	
 
 }

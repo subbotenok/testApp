@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import com.example.testapp.R;
 import com.testapp.adapter.WeatherPagerAdapter;
@@ -119,6 +121,12 @@ public class MainActivity extends FragmentActivity {
 	    doUnbindService();
 	}
 	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.main, menu);
+	    return true;
+	}
 	
 
 }

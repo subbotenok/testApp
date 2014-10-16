@@ -31,7 +31,7 @@ public class WeatherDataListService extends Service{
 	@Override
 	public void onCreate() {
 		NewCity("Moscow");
-		NewCity("Saint%20Petersburg,ru");
+		NewCity("Saint Petersburg,ru");
 		
 		super.onCreate();
 	}

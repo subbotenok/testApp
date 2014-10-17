@@ -20,7 +20,7 @@ public class WeatherFragment extends Fragment {
 	public static final String API_QUERY_WEATHER = "http://api.openweathermap.org/data/2.5/weather?q=%1$s&mode=xml";
 	public static final String API_QUERY_DAYLY  = "http://api.openweathermap.org/data/2.5/forecast/daily?q=%1$s&mode=xml&units=metric&cnt=7";
 	CurrentWeatherFragment mCurrentWeatherFragment;
-	WeatherFor3DaysFragment mWeatherFor3DaysFragment;
+	WeatherFor7DaysFragment mWeatherFor7DaysFragment;
 	boolean mShowCurrentWeatherFlag;
 	private String mCityName;
 	
@@ -47,7 +47,7 @@ public class WeatherFragment extends Fragment {
 		mCityName = getArguments().getString(CITY_NAME,"");
 
 		mCurrentWeatherFragment = CurrentWeatherFragment.createCurrentWeatherFragment(mCityName);
-		mWeatherFor3DaysFragment  = WeatherFor3DaysFragment.createWeatherFor3DaysFragment(mCityName);
+		mWeatherFor7DaysFragment  = WeatherFor7DaysFragment.createWeatherFor7DaysFragment(mCityName);
 
 		
 		View rootView = inflater.inflate(R.layout.weather_fragment, container,
@@ -80,7 +80,7 @@ public class WeatherFragment extends Fragment {
 					aq.text("Show current weather.");
 					
 					FragmentTransaction transaction = WeatherFragment.this.getFragmentManager().beginTransaction();
-					transaction.replace(mGeneratedFrameLayoutID, mWeatherFor3DaysFragment);
+					transaction.replace(mGeneratedFrameLayoutID, mWeatherFor7DaysFragment);
 					transaction.commitAllowingStateLoss();
 					
 				}else

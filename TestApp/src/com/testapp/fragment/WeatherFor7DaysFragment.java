@@ -20,14 +20,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SimpleAdapter;
 
-public class WeatherFor3DaysFragment extends Fragment {
+public class WeatherFor7DaysFragment extends Fragment {
 	
 	private static final String CITY_NAME = "cityName";
-	public static WeatherFor3DaysFragment createWeatherFor3DaysFragment(String cityName) {
+	public static WeatherFor7DaysFragment createWeatherFor7DaysFragment(String cityName) {
 		Bundle bundle = new Bundle();
 		bundle.putString(CITY_NAME, cityName);
 		
-		WeatherFor3DaysFragment weatherFragment = new WeatherFor3DaysFragment();
+		WeatherFor7DaysFragment weatherFragment = new WeatherFor7DaysFragment();
 		weatherFragment.setArguments(bundle);
 		
 		return weatherFragment;

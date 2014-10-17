@@ -25,6 +25,7 @@
             </intent-filter>
         </activity>
         <service android:name="com.testapp.service.WeatherDataListService"></service>
+        <activity android:name="com.testapp.activity.SettingsActivity"></activity>
     </application>
 
 </manifest>

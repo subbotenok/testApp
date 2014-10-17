@@ -1,6 +1,7 @@
 package com.testapp.service;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 import com.testapp.data.WeatherDataList;
@@ -59,6 +60,12 @@ public class WeatherDataListService extends Service{
 				newCityListener.OnNewCity(value.mCityName, value);
 		}
 	}
+	
+	public Collection<WeatherDataList>  getAllCityes()
+	{
+		return  mWeatherMap.values();
+	}
+	
 	
 	public void setNewCityListener(OnNewCityListener newCityListener) {
 		this.newCityListener = newCityListener;

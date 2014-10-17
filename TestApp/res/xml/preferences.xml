@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <EditTextPreference
+        android:key="Add_new_city"
+        android:title="Add new city" />
+
+    <PreferenceCategory
+        android:key="CITYES_LIST"
+        android:title="Cityes list" />
+
+</PreferenceScreen>

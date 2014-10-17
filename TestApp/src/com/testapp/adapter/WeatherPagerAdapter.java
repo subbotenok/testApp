@@ -15,11 +15,11 @@ public class WeatherPagerAdapter extends FragmentStatePagerAdapter {
 	
 	
 	private ActionBar mActionBar;
-	private ArrayList<WeatherFragment> fragments;
+	private ArrayList<Fragment> fragments;
 
 
 
-	public WeatherPagerAdapter(FragmentManager fm, ActionBar actionBar, ArrayList<WeatherFragment> fragments) {
+	public WeatherPagerAdapter(FragmentManager fm, ActionBar actionBar, ArrayList<Fragment> fragments) {
 		super(fm);
 		this.mActionBar = actionBar;
 		this.fragments = fragments;

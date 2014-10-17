@@ -10,10 +10,12 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.example.testapp.R;
 import com.testapp.adapter.WeatherPagerAdapter;
@@ -63,7 +65,7 @@ public class MainActivity extends FragmentActivity {
 		doBindService();
 	}
 	
-	ArrayList<WeatherFragment> fragments = new ArrayList<WeatherFragment>();
+	ArrayList<Fragment> fragments = new ArrayList<Fragment>();
 	
 	private void addTab(String CityName)
 	{
@@ -127,6 +129,17 @@ public class MainActivity extends FragmentActivity {
 	    inflater.inflate(R.menu.main, menu);
 	    return true;
 	}
-	
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle item selection
+	    switch (item.getItemId()) {
+	        case R.id.action_settings:
+	        	startActivity(new Intent(this,SettingsActivity.class));
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
 
 }
